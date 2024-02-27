@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IframeVideo</title>
+</head>
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+        gap: 40px;
+    }
+    button{
+        width: fit-content;
+        padding: 10px 15px;
+        color: white;
+        background-color: black;
+        font-size: 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all ease-in-out;
+    }
+    fieldset{
+        height: 50vh;
+        width: 50vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    iframe{
+        width: 760px;
+        height: 330px;
+    }
+</style>
+<body>
+    <fieldset id="video-wrapper">
+    </fieldset>
+    <button id="play-button">Play</button>
+</body>
+<script>
+    let playBtn = document.getElementById("play-button");
+    playBtn.addEventListener("mousedown", function(){
+        this.style.transform = "scale(0.9)"
+    })
+    playBtn.addEventListener("mouseup", function(){
+        this.style.transform = "scale(1)"
+    })
+
+    const video = document.createElement("iframe");
+    video.setAttribute("id", "youtubeVideo");
+    video.setAttribute("src", "https://www.youtube.com/embed/pfZ1l_AYK9o?si=lC7GkrOosDFf0jlZ&autoplay=1&mute=1")
+    video.setAttribute("title", "YouTube video player");
+    video.setAttribute("frameborder", "0");
+    video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+    video.setAttribute("allowfullscreen", "");
+
+    playBtn.addEventListener("click", function(){
+        document.getElementById("video-wrapper").append(video)
+    })
+
+
+
+</script>
+</html>
